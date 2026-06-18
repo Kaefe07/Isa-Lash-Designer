@@ -1,0 +1,593 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Isabella Rodrigues | Lash Designer</title>
+
+<meta name="description" content="Extensão de cílios, volume brasileiro e tufinhos de seda com Isabella Rodrigues Lash Designer em Santo Cristo, Rio de Janeiro.">
+
+<link rel="icon" href="assets/logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+
+:root{
+    --gold:#d4af37;
+    --black:#111111;
+    --cream:#f8f1eb;
+    --white:#ffffff;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--cream);
+    color:var(--black);
+}
+
+.navbar{
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.brand-name{
+    font-family:'Cinzel',serif;
+    letter-spacing:2px;
+    font-weight:600;
+}
+
+.logo{
+    width:55px;
+    margin-right:10px;
+}
+
+.hero{
+    height:100vh;
+    background:url('assets/foto2 (5).jpeg') center center/cover;
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    color:white;
+    text-align:center;
+}
+
+.hero h1{
+    font-family:'Cinzel',serif;
+    font-size:3rem;
+}
+
+.btn-gold{
+    background:var(--gold);
+    color:#fff;
+    border:none;
+}
+
+.btn-gold:hover{
+    opacity:.9;
+}
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-family:'Cinzel',serif;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.service-card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:100%;
+}
+
+.service-card i{
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:20px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+.whatsapp-box{
+    background:#fff;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.instagram-section{
+    background:#fff;
+}
+
+.location-section{
+    background:#fff;
+}
+
+.footer{
+    background:#111;
+    color:white;
+    padding:30px 0;
+}
+
+.social-icons a{
+    color:white;
+    font-size:1.5rem;
+    margin:0 10px;
+}
+
+.whatsapp-float{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    background:#25d366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    text-decoration:none;
+    z-index:999;
+}
+
+.whatsapp-float:hover{
+    color:white;
+    transform:scale(1.1);
+}
+
+</style>
+</head>
+```html
+<script>
+document.getElementById('agendamentoForm').addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const servico = document.getElementById('servico').value;
+    const data = document.getElementById('data').value;
+    const horario = document.getElementById('horario').value;
+
+const mensagem =
+`✨ Agendamento - Isabella Rodrigues Lash Designer ✨
+
+Olá, Isabella!
+
+Gostaria de solicitar um agendamento com as seguintes informações:
+
+👤 Cliente: ${nome}
+📞 Telefone: ${telefone}
+
+💎 Serviço escolhido:
+${servico}
+
+📅 Data:
+${data}
+
+🕒 Horário desejado:
+${horario}
+
+Fico aguardando a confirmação do horário.
+
+Muito obrigada! 💕`;
+
+    const url =
+`https://wa.me/5521972257087?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, '_blank');
+
+});
+</script>
+<body>
+
+<a href="https://wa.me/5521972257087"
+class="whatsapp-float"
+target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="assets/logo.png" class="logo" alt="Logo">
+
+<span class="brand-name">
+ISABELLA RODRIGUES
+</span>
+</a>
+
+<button class="navbar-toggler"
+type="button"
+data-toggle="collapse"
+data-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ml-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#sobre">Sobre</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#servicos">Serviços</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#galeria">Galeria</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contato">Contato</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<h1>
+Realçando sua beleza através do olhar
+</h1>
+
+<p class="lead mt-3">
+Técnicas modernas de extensão de cílios para valorizar sua beleza natural com elegância e delicadeza.
+</p>
+
+<a href="#contato"
+class="btn btn-gold btn-lg mt-3">
+
+Agendar Horário
+
+</a>
+
+</div>
+
+</section>
+
+<section id="sobre">
+
+<div class="container">
+
+<h2 class="section-title">
+Sobre Mim
+</h2>
+
+<div class="row align-items-center">
+
+<div class="col-md-6">
+<img src="assets/isa.png"
+class="img-fluid rounded"
+alt="Isabella Rodrigues">
+</div>
+
+<div class="col-md-6">
+
+<h3>Olá, seja muito bem-vinda!</h3>
+
+<p>
+Eu sou Isaa, lash designer, esposa, mãe de três filhos e apaixonada por tudo o que envolve beleza e autoestima.
+</p>
+
+<p>
+Meu propósito é ajudar mulheres a se sentirem mais confiantes, elegantes e felizes ao se olharem no espelho.
+</p>
+
+<p>
+Cada atendimento é realizado com atenção, cuidado e dedicação para valorizar a beleza natural de cada cliente.
+</p>
+
+<p>
+Será um prazer cuidar do seu olhar. ✨
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="servicos">
+
+<div class="container">
+
+<h2 class="section-title">
+Serviços
+</h2>
+
+<div class="row">
+
+<div class="col-md-6 mb-4">
+
+<div class="service-card">
+
+<i class="fas fa-eye fa-3x"></i>
+
+<h3>Tufinhos de Seda</h3>
+
+<p>R$ 50,00</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<div class="service-card">
+
+<i class="fas fa-magic fa-3x"></i>
+
+<h3>Volume Brasileiro</h3>
+
+<p>Aplicação: R$ 100,00</p>
+
+<p>Manutenção: R$ 100,00</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="galeria" class="gallery">
+
+<div class="container">
+
+<h2 class="section-title">
+Galeria
+</h2>
+
+<div class="row">
+
+<div class="col-12">
+    <h3 class="text-center mb-4">
+        ✨ Tufinhos de Seda
+    </h3>
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto1 (3).jpeg" alt="Tufinhos de Seda">
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto1 (6).jpeg" alt="Tufinhos de Seda">
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto1 (7).jpeg" alt="Tufinhos de Seda">
+</div>
+
+<div class="col-12 mt-5">
+    <h3 class="text-center mb-4">
+        👑 Extensão de Cílios (Volume Brasileiro)
+    </h3>
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto2 (1).jpeg" alt="Volume Brasileiro">
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto2 (2).jpeg" alt="Volume Brasileiro">
+</div>
+
+<div class="col-md-4">
+    <img src="assets/foto2 (4).jpeg" alt="Volume Brasileiro">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="instagram-section">
+
+<div class="container text-center">
+
+<h2 class="section-title">
+Instagram
+</h2>
+
+<p>
+Acompanhe resultados, novidades e transformações.
+</p>
+
+<a href="https://www.instagram.com/lashisabellarodrigues"
+target="_blank"
+class="btn btn-dark">
+
+@lashisabellarodrigues
+
+</a>
+
+</div>
+
+</section>
+
+```html
+<section id="contato">
+
+<div class="container">
+
+<h2 class="section-title">
+Agende seu Horário
+</h2>
+
+<div class="whatsapp-box">
+
+<form id="agendamentoForm">
+
+<div class="form-group">
+<label>Nome</label>
+<input type="text" id="nome" class="form-control" required>
+</div>
+
+<div class="form-group">
+<label>Telefone</label>
+<input type="tel" id="telefone" class="form-control" required>
+</div>
+
+<div class="form-group">
+<label>Serviço</label>
+
+<select id="servico" class="form-control" required>
+<option value="">Selecione</option>
+<option>Tufinhos de Seda (1h)</option>
+<option>Volume Brasileiro (2h)</option>
+</select>
+
+</div>
+
+<div class="form-group">
+<label>Data</label>
+<input type="date" id="data" class="form-control" required>
+</div>
+
+<div class="form-group">
+<label>Horário</label>
+
+<select id="horario" class="form-control" required>
+
+<option>08:00</option>
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>12:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+
+</select>
+
+</div>
+
+<button type="submit" class="btn btn-success btn-lg">
+
+<i class="fab fa-whatsapp"></i>
+Solicitar Agendamento
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="location-section">
+
+<div class="container text-center">
+
+<h2 class="section-title">
+Atendimento
+</h2>
+
+<p>📍 Santo Cristo - Rio de Janeiro/RJ</p>
+
+<p>📱 (21) 97225-7087</p>
+
+<p>🕒 Segunda a Sábado</p>
+
+<p>08:00 às 18:00</p>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="container text-center">
+
+<p>
+© 2026 Isabella Rodrigues - Todos os direitos reservados.
+</p>
+
+<div class="social-icons mt-3">
+
+<a href="https://www.instagram.com/lashisabellarodrigues" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/5521972257087" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+```
