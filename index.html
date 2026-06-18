@@ -176,48 +176,60 @@ section{
 
 </style>
 </head>
-```html
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
 
-    const form = document.querySelector("#agendamentoForm");
+window.addEventListener("DOMContentLoaded", function() {
 
-    form.addEventListener("submit", (e) => {
+    const form = document.getElementById("agendamentoForm");
+
+    if (!form) {
+        console.error("Formulário não encontrado.");
+        return;
+    }
+
+    form.addEventListener("submit", function(e) {
 
         e.preventDefault();
 
-        const nome = document.querySelector("#nome").value;
-        const telefone = document.querySelector("#telefone").value;
-        const servico = document.querySelector("#servico").value;
-        const data = document.querySelector("#data").value;
-        const horario = document.querySelector("#horario").value;
+        const nome = document.getElementById("nome").value;
+        const telefone = document.getElementById("telefone").value;
+        const servico = document.getElementById("servico").value;
+        const data = document.getElementById("data").value;
+        const horario = document.getElementById("horario").value;
 
-        const mensagem = `✨ Agendamento - Isabella Rodrigues Lash Designer ✨
+        const mensagem =
+`✨ Agendamento - Isabella Rodrigues Lash Designer ✨
 
-Olá Isabella!
+Olá, Isabella!
+
+Gostaria de solicitar um agendamento com as seguintes informações:
 
 👤 Cliente: ${nome}
 📞 Telefone: ${telefone}
 
-💎 Serviço:
+💎 Serviço escolhido:
 ${servico}
 
 📅 Data:
 ${data}
 
-🕒 Horário:
+🕒 Horário desejado:
 ${horario}
 
-Aguardo sua confirmação. 💕`;
+Fico aguardando sua confirmação.
 
-        const whatsappUrl =
-            "https://wa.me/5521972257087?text=" +
-            encodeURIComponent(mensagem);
+Muito obrigada! 💕`;
 
-        window.location.href = whatsappUrl;
+        const url =
+`https://wa.me/5521972257087?text=${encodeURIComponent(mensagem)}`;
+
+        window.open(url, "_blank");
+
     });
 
 });
+
 </script>
 <body>
 
@@ -265,6 +277,10 @@ data-target="#menu">
 
 <li class="nav-item">
 <a class="nav-link" href="#contato">Contato</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="#feedbacks">Feedbacks</a>
 </li>
 
 </ul>
@@ -375,7 +391,7 @@ Serviços
 
 <p>Aplicação: R$ 100,00</p>
 
-<p>Manutenção: R$ 100,00</p>
+<p>Manutenção: R$ 55,00</p>
 
 </div>
 
@@ -438,7 +454,57 @@ Galeria
 </div>
 
 </section>
+<section id="feedbacks" class="feedbacks-section">
 
+    <div class="container">
+
+        <h2 class="section-title">
+            O que minhas clientes dizem 💖
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="feedback-card">
+                    <p>
+                        "Amei o resultado! Ficou super natural e confortável. Com certeza voltarei."
+                    </p>
+
+                    <h5>⭐⭐⭐⭐⭐</h5>
+
+                    <strong>Maria S.</strong>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="feedback-card">
+                    <p>
+                        "Atendimento maravilhoso, ambiente acolhedor e cílios perfeitos."
+                    </p>
+
+                    <h5>⭐⭐⭐⭐⭐</h5>
+
+                    <strong>Ana C.</strong>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="feedback-card">
+                    <p>
+                        "Durou bastante e ficou exatamente como eu queria. Recomendo demais!"
+                    </p>
+
+                    <h5>⭐⭐⭐⭐⭐</h5>
+
+                    <strong>Juliana R.</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 <section class="instagram-section">
 
 <div class="container text-center">
@@ -462,6 +528,7 @@ class="btn btn-dark">
 </div>
 
 </section>
+
 
 <section id="contato">
 
@@ -590,4 +657,3 @@ Atendimento
 
 </body>
 </html>
-```
