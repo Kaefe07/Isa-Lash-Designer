@@ -178,17 +178,27 @@ section{
 </head>
 ```html
 <script>
-document.getElementById('agendamentoForm').addEventListener('submit', function(e){
 
-    e.preventDefault();
+window.addEventListener("DOMContentLoaded", function() {
 
-    const nome = document.getElementById('nome').value;
-    const telefone = document.getElementById('telefone').value;
-    const servico = document.getElementById('servico').value;
-    const data = document.getElementById('data').value;
-    const horario = document.getElementById('horario').value;
+    const form = document.getElementById("agendamentoForm");
 
-const mensagem =
+    if (!form) {
+        console.error("Formulário não encontrado.");
+        return;
+    }
+
+    form.addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const telefone = document.getElementById("telefone").value;
+        const servico = document.getElementById("servico").value;
+        const data = document.getElementById("data").value;
+        const horario = document.getElementById("horario").value;
+
+        const mensagem =
 `✨ Agendamento - Isabella Rodrigues Lash Designer ✨
 
 Olá, Isabella!
@@ -207,16 +217,19 @@ ${data}
 🕒 Horário desejado:
 ${horario}
 
-Fico aguardando a confirmação do horário.
+Fico aguardando sua confirmação.
 
 Muito obrigada! 💕`;
 
-    const url =
+        const url =
 `https://wa.me/5521972257087?text=${encodeURIComponent(mensagem)}`;
 
-    window.open(url, '_blank');
+        window.open(url, "_blank");
+
+    });
 
 });
+
 </script>
 <body>
 
