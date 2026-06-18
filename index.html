@@ -22,9 +22,10 @@
 <style>
 
 :root{
-    --gold:#d4af37;
+    --brown:#8B5A12;
+    --gold:#D4AF37;
     --black:#111111;
-    --cream:#f8f1eb;
+    --cream:#F7EFE9;
     --white:#ffffff;
 }
 
@@ -34,8 +35,11 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:var(--cream);
-    color:var(--black);
+    background: linear-gradient(
+135deg,
+#F7EFE9,
+#E8D8CC
+);
 }
 
 .navbar{
@@ -76,15 +80,22 @@ body{
     text-align:center;
 }
 
-.hero h1{
-    font-family:'Cinzel',serif;
-    font-size:3rem;
+.hero h1,
+.section-title,
+.brand-name,
+h2,
+h3{
+    color: var(--brown);
 }
 
 .btn-gold{
-    background:var(--gold);
+    background:var(--brown);
     color:#fff;
     border:none;
+}
+
+.btn-gold:hover{
+    background:#744A0F;
 }
 
 .btn-gold:hover{
@@ -111,8 +122,7 @@ section{
 }
 
 .service-card i{
-    color:var(--gold);
-    margin-bottom:20px;
+    color:var(--brown);
 }
 
 .gallery img{
@@ -208,15 +218,12 @@ section{
 }
 
 .feedback-card h5{
-    color:#d4af37;
-    margin:15px 0;
+    color:var(--brown);
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon{
-    background-color:#d4af37;
-    border-radius:50%;
-    padding:15px;
+    background-color:var(--brown);
 }
 
 html {
@@ -254,7 +261,7 @@ html {
     border:none;
     border-radius:50%;
 
-    background:#d4af37;
+   background:var(--brown);
     color:white;
 
     font-size:26px;
@@ -270,6 +277,21 @@ html {
 
 #btnTopo:hover{
     transform:scale(1.1);
+}
+
+.nav-link{
+    color:var(--brown) !important;
+    font-weight:600;
+}
+
+.nav-link:hover{
+    color:#744A0F !important;
+}
+
+.service-card,
+.feedback-card,
+.whatsapp-box{
+    border-top:4px solid var(--brown);
 }
 </style>
 </head>
