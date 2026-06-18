@@ -246,8 +246,7 @@ html {
     position:fixed;
 
     bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
+    left:20px;
 
     width:60px;
     height:60px;
@@ -265,7 +264,10 @@ html {
     z-index:9999;
 
     box-shadow:0 4px 15px rgba(0,0,0,.2);
+
+    transition:.3s;
 }
+
 #btnTopo:hover{
     transform:scale(1.1);
 }
@@ -412,7 +414,9 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-<button id="btnTopo">⬆</button>
+<button id="btnTopo">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
 <body>
 
