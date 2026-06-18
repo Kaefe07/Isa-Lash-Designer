@@ -9,6 +9,8 @@
 
 <meta name="description" content="Extensão de cílios, volume brasileiro e tufinhos de seda com Isabella Rodrigues Lash Designer em Santo Cristo, Rio de Janeiro.">
 
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <link rel="icon" href="assets/logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -151,7 +153,23 @@ section{
     font-size:1.5rem;
     margin:0 10px;
 }
+.whatsapp-float{
+    animation:pulse 2s infinite;
+}
 
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
 .whatsapp-float{
     position:fixed;
     right:20px;
@@ -174,10 +192,136 @@ section{
     transform:scale(1.1);
 }
 
+.feedback-card{
+    max-width:700px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.feedback-card p{
+    font-size:1.1rem;
+    font-style:italic;
+}
+
+.feedback-card h5{
+    color:#d4af37;
+    margin:15px 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    background-color:#d4af37;
+    border-radius:50%;
+    padding:15px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#contato.destacado {
+    animation: destaque 1s ease;
+}
+
+@keyframes destaque {
+    0% {
+        transform: scale(0.98);
+    }
+
+    50% {
+        transform: scale(1.01);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#btnTopo{
+    display:block;
+    position:fixed;
+
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:60px;
+    height:60px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#d4af37;
+    color:white;
+
+    font-size:26px;
+    font-weight:bold;
+
+    cursor:pointer;
+    z-index:9999;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+#btnTopo:hover{
+    transform:scale(1.1);
+}
 </style>
 </head>
 
 <script>
+window.addEventListener("DOMContentLoaded", () => {
+
+    const campoData = document.getElementById("data");
+
+    if(campoData){
+        const hoje = new Date().toISOString().split("T")[0];
+        campoData.min = hoje;
+    }
+
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btn = document.getElementById("btnAgendar");
+
+    btn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const destino = document.getElementById("contato");
+        const posicao = destino.offsetTop;
+
+        let inicio = window.pageYOffset;
+        let distancia = posicao - inicio;
+        let duracao = 1500; // 1,5 segundos
+        let inicioTempo = null;
+
+        function animar(tempoAtual) {
+
+            if (!inicioTempo) inicioTempo = tempoAtual;
+
+            let tempoDecorrido = tempoAtual - inicioTempo;
+            let progresso = Math.min(tempoDecorrido / duracao, 1);
+
+            window.scrollTo(
+                0,
+                inicio + distancia * progresso
+            );
+
+            if (tempoDecorrido < duracao) {
+                requestAnimationFrame(animar);
+            }
+        }
+
+        requestAnimationFrame(animar);
+
+    });
+
+});
+
 
 window.addEventListener("DOMContentLoaded", function() {
 
@@ -230,7 +374,46 @@ Muito obrigada! 💕`;
 
 });
 
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const btnTopo = document.getElementById("btnTopo");
+
+    btnTopo.addEventListener("click", function(){
+
+        let inicio = window.pageYOffset;
+        let duracao = 1500; // 1,5 segundos
+        let inicioTempo = null;
+
+        function animar(tempoAtual){
+
+            if(!inicioTempo){
+                inicioTempo = tempoAtual;
+            }
+
+            let tempoDecorrido = tempoAtual - inicioTempo;
+            let progresso = Math.min(tempoDecorrido / duracao, 1);
+
+            window.scrollTo(
+                0,
+                inicio * (1 - progresso)
+            );
+
+            if(progresso < 1){
+                requestAnimationFrame(animar);
+            }
+        }
+
+        requestAnimationFrame(animar);
+
+    });
+
+});
 </script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<button id="btnTopo">⬆</button>
+
 <body>
 
 <a href="https://wa.me/5521972257087"
@@ -262,7 +445,7 @@ data-target="#menu">
 <div class="collapse navbar-collapse" id="menu">
 
 <ul class="navbar-nav ml-auto">
-
+<p id="relogio"></p>
 <li class="nav-item">
 <a class="nav-link" href="#sobre">Sobre</a>
 </li>
@@ -302,11 +485,8 @@ Realçando sua beleza através do olhar
 Técnicas modernas de extensão de cílios para valorizar sua beleza natural com elegância e delicadeza.
 </p>
 
-<a href="#contato"
-class="btn btn-gold btn-lg mt-3">
-
-Agendar Horário
-
+<a href="#" id="btnAgendar" class="btn btn-gold btn-lg">
+    Agendar Horário
 </a>
 
 </div>
@@ -456,53 +636,95 @@ Galeria
 </section>
 <section id="feedbacks" class="feedbacks-section">
 
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            O que minhas clientes dizem 💖
-        </h2>
+<h2 class="section-title">
+💖 O que minhas clientes dizem
+</h2>
 
-        <div class="row">
+<div id="feedbackCarousel" class="carousel slide" data-ride="carousel">
 
-            <div class="col-md-4 mb-4">
-                <div class="feedback-card">
-                    <p>
-                        "Amei o resultado! Ficou super natural e confortável. Com certeza voltarei."
-                    </p>
+<div class="carousel-inner">
 
-                    <h5>⭐⭐⭐⭐⭐</h5>
-
-                    <strong>Maria S.</strong>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="feedback-card">
-                    <p>
-                        "Atendimento maravilhoso, ambiente acolhedor e cílios perfeitos."
-                    </p>
-
-                    <h5>⭐⭐⭐⭐⭐</h5>
-
-                    <strong>Ana C.</strong>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="feedback-card">
-                    <p>
-                        "Durou bastante e ficou exatamente como eu queria. Recomendo demais!"
-                    </p>
-
-                    <h5>⭐⭐⭐⭐⭐</h5>
-
-                    <strong>Juliana R.</strong>
-                </div>
-            </div>
-
+    <div class="carousel-item active">
+        <div class="feedback-card">
+            <p>"Nada a reclamar, só elogiar. Primeira vez que coloquei cílios foi com você e você me fez sentir muito bem. Realçou o meu olhar e o atendimento foi maravilhoso. Te desejo todo sucesso na sua carreira profissional. ❤️"</p>
+            <h5>⭐⭐⭐⭐⭐</h5>
+            <strong>Esther ❤️</strong>
         </div>
-
     </div>
+
+    <div class="carousel-item">
+        <div class="feedback-card">
+            <p>"Fiz cílios com você e gostei bastante do atendimento. Você foi muito simpática, paciente e cuidadosa durante todo o procedimento. O resultado ficou lindo e exatamente como eu esperava."</p>
+            <h5>⭐⭐⭐⭐⭐</h5>
+            <strong>Maytê</strong>
+        </div>
+    </div>
+
+    <div class="carousel-item">
+        <div class="feedback-card">
+            <p>"Fiz o volume brasileiro pela primeira vez e foi maravilhoso. Atendimento perfeito. Mãos tão leves que até durmo durante o atendimento."</p>
+            <h5>⭐⭐⭐⭐⭐</h5>
+            <strong>Maíra Rodrigues</strong>
+        </div>
+    </div>
+
+    <div class="carousel-item">
+        <div class="feedback-card">
+            <p>"A experiência de atendimento é ótima, sem reclamações. Profissional excelente e me deixa com olhar de boneca."</p>
+            <h5>⭐⭐⭐⭐⭐</h5>
+            <strong>Thaissa Cardoso</strong>
+        </div>
+    </div>
+
+    <div class="carousel-item">
+        <div class="feedback-card">
+            <p>"Atendimento maravilhoso desde o primeiro contato até depois da colocação dos cílios. Sempre muito atenciosa e cuidadosa com cada cliente. 💗"</p>
+            <h5>⭐⭐⭐⭐⭐</h5>
+            <strong>Letícia Silva</strong>
+        </div>
+    </div>
+
+</div>
+
+<a class="carousel-control-prev" href="#feedbackCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+</a>
+
+<a class="carousel-control-next" href="#feedbackCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+</a>
+
+</div>
+
+</div>
+
+</section>
+<section class="stats">
+
+<div class="container text-center">
+
+<div class="row">
+
+<div class="col-md-4">
+<h2>+100</h2>
+<p>Clientes Atendidas</p>
+</div>
+
+<div class="col-md-4">
+<h2>+200</h2>
+<p>Procedimentos Realizados</p>
+</div>
+
+<div class="col-md-4">
+<h2>5★</h2>
+<p>Avaliação das Clientes</p>
+</div>
+
+</div>
+
+</div>
 
 </section>
 <section class="instagram-section">
